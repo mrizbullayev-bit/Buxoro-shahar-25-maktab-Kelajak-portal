@@ -1,49 +1,6 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>25-maktab | Kelajak portali</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#eef8f5;color:#163d35}
-header{background:white;padding:22px;text-align:center;box-shadow:0 2px 10px #0001}
-header h2{margin:0;color:#087f67}
-main{max-width:850px;margin:35px auto;padding:20px}
-.card{background:linear-gradient(135deg,#062b27,#08785d);color:white;padding:45px 30px;border-radius:25px}
-h1{font-size:clamp(28px,5vw,45px)}
-p{line-height:1.7}
-button{background:#00a47b;color:white;border:0;border-radius:12px;padding:15px 25px;font-size:17px;cursor:pointer;margin:6px}
-.lang{text-align:center;margin-bottom:25px}
-footer{text-align:center;padding:20px;color:#567}
-</style>
-</head>
-<body>
-<header>
-<h2>🎓 25-MAKTAB | KELAJAK PORTALI</h2>
-<p>Qiziqish va qobiliyatlarni aniqlash tizimi</p>
-</header>
-<main>
-<div class="lang">
-<button onclick="setLang('uz')">🇺🇿 O‘zbekcha</button>
-<button onclick="setLang('ru')">🇷🇺 Русский</button>
-</div>
-<section class="card">
-<h1 id="title">Kelajagingizni bugundan boshlang!</h1>
-<p id="desc">Kasbiy qiziqishlaringiz va qobiliyatlaringizni kashf eting. O‘zingizga mos kasblar haqida bilib oling.</p>
-<button id="start" onclick="alert('Test bo‘limi keyingi bosqichda qo‘shiladi')">Testni boshlash</button>
-</section>
-</main>
-<footer>Buxoro shahar 25-umumiy o‘rta ta’lim maktabi © 2026</footer>
-<script>
-function setLang(lang){
-const ru=lang==='ru';
-document.documentElement.lang=lang;
-document.getElementById('title').textContent=ru?'Начните строить будущее сегодня!':'Kelajagingizni bugundan boshlang!';
-document.getElementById('desc').textContent=ru?'Узнайте о своих интересах, способностях и подходящих профессиях.':'Kasbiy qiziqishlaringiz va qobiliyatlaringizni kashf eting. O‘zingizga mos kasblar haqida bilib oling.';
-document.getElementById('start').textContent=ru?'Начать тест':'Testni boshlash';
-document.getElementById('start').onclick=()=>alert(ru?'Тест будет добавлен на следующем этапе':'Test bo‘limi keyingi bosqichda qo‘shiladi');
-}
-</script>
-</body>
-</html>
+<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>25-maktab | Kelajak portali</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eff8f5;color:#12342d}header{background:white;padding:20px;text-align:center;box-shadow:0 2px 12px #0001}header h2{margin:0;color:#087a60}main{max-width:900px;margin:35px auto;padding:18px}.hero{background:linear-gradient(120deg,#062c2a,#087f65);color:white;padding:38px;border-radius:24px}.hero h1{font-size:clamp(28px,5vw,42px)}.panel{background:white;border-radius:20px;padding:25px;margin-top:22px;box-shadow:0 5px 20px #0001}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}button{border:0;border-radius:12px;background:#008d6c;color:white;padding:15px 20px;font-size:16px;cursor:pointer}button.secondary{background:#e0f4ee;color:#075e4a}button:focus-visible,input:focus-visible{outline:3px solid #e4a627}button.selected{background:#065643;color:white}label{display:block;padding:10px 0}input[type=radio]{accent-color:#008d6c}select{padding:12px;width:100%;border-radius:10px;border:1px solid #aaa}.muted{color:#5b716a}.hide{display:none}.result{background:#e6f6ee;border-radius:14px;padding:18px}footer{text-align:center;padding:25px;color:#62736e}@media(max-width:500px){.hero{padding:24px}.panel{padding:18px}}</style></head><body><header><h2>🎓 25-MAKTAB | KELAJAK PORTALI</h2><p>Qiziqishlar va kasbiy yo‘nalishlarni o‘rganish</p></header><main><section class="hero"><h1>Kelajagingizni bugundan kashf eting!</h1><p>1–11-sinf o‘quvchilari uchun yoshga mos qiziqishlar so‘rovnomasi va ta’lim yo‘li tavsiyalari.</p></section><section class="panel" id="start"><h2>Qaysi sinfda o‘qiysiz?</h2><div class="choices"><button onclick="start('primary')">1–4-sinflar</button><button onclick="start('middle')">5–8-sinflar</button><button onclick="start('upper')">9–11-sinflar</button></div><p class="muted">Bu so‘rovnoma tashxis emas. Natijalar faqat yo‘nalish tanlashga yordam beradi. Javoblar serverga yuborilmaydi.</p></section><section class="panel hide" id="survey"><h2 id="heading"></h2><div id="gradeWrap" class="hide"><label for="grade">Sinfingizni tanlang</label><select id="grade"><option value="9">9-sinf</option><option value="10">10-sinf</option><option value="11">11-sinf</option></select></div><p class="muted">Har bir savol uchun o‘zingizga eng yaqin javobni tanlang.</p><div id="questions"></div><p id="error" role="alert" style="color:#ad3030"></p><button onclick="finish()">Natijani ko‘rish</button> <button class="secondary" onclick="reset()">Orqaga</button></section><section class="panel hide" id="outcome" aria-live="polite"><h2>Sizning dastlabki natijangiz</h2><div id="result" class="result"></div><p class="muted">Natija qisqa qiziqishlar so‘rovnomasi asosida hisoblangan, psixologik yoki kasbiy tashxis emas. Yakuniy qarorni o‘quvchi, ota-ona va maslahatchi birgalikda muhokama qilishi mumkin.</p><button onclick="window.print()">Chop etish / PDF</button> <button class="secondary" onclick="reset()">Yangi so‘rovnoma</button></section></main><footer>Buxoro shahar 25-umumiy o‘rta ta’lim maktabi • Sinov versiyasi • 2026</footer><script>
+const categories={science:'Fan va tadqiqot',tech:'Texnika va IT',art:'Ijod va san’at',social:'Insonlarga yordam',business:'Tashkilotchilik va tadbirkorlik',practical:'Amaliy hunarlar'};
+const data={primary:[['Qaysi mashg‘ulot sizga ko‘proq yoqadi?',['Tajribalar qilish','Konstruktor yig‘ish','Rasm chizish','Do‘stlarga yordam berish','O‘yin tashkil qilish','Biror buyum yasash']],['Bo‘sh vaqtingizda nimani tanlaysiz?',['Tabiatni kuzatish','Kompyuterda o‘rganish','Qo‘shiq yoki hikoya','Birga o‘ynash va yordam','Jamoani boshqarish','Qo‘l mehnati']],['Maktabda qaysi ish sizga qiziq?',['Masalalarni yechish','Texnik qurilmalarni bilish','Rasm va musiqa','Boshqalarga tushuntirish','Tadbir uyushtirish','Narsalarni tuzatish']]],middle:[['Qaysi faoliyat sizni qiziqtiradi?',['Ilmiy tajriba','Dasturlash va robototexnika','Dizayn va ijod','Ta’lim va ko‘mak','Loyiha boshqarish','Ustaxonadagi ish']],['Qaysi vazifani tanlaysiz?',['Muammoni tadqiq qilish','Qurilma yaratish','Video yoki rasm tayyorlash','Jamoaga yordam berish','Tadbirni rejalash','Buyum yasash']],['Kelajakda nimani ko‘proq o‘rganmoqchisiz?',['Tabiiy fanlar','Texnologiyalar','San’at va tillar','Odamlar bilan ishlash','Biznes asoslari','Amaliy kasblar']],['Qaysi to‘garakka borardingiz?',['Yosh tadqiqotchi','IT va robototexnika','Teatr yoki tasviriy san’at','Ko‘ngillilar','Yosh liderlar','Hunarmandchilik']]],upper:[['Qaysi ish sizga ko‘proq yoqadi?',['Tadqiqot va tahlil','Dastur yoki texnika yaratish','Ijodiy loyiha','Odamlarga xizmat ko‘rsatish','Jamoa va biznes boshqarish','Uskuna yoki buyum bilan ishlash']],['Qaysi sohada o‘zingizni sinab ko‘rmoqchisiz?',['Tibbiyot yoki ilm-fan','Muhandislik yoki IT','Media yoki dizayn','Pedagogika yoki ijtimoiy soha','Tadbirkorlik','Avtoservis yoki hunarmandchilik']],['Qanday topshiriqda kuchliroq ekaningizni his qilasiz?',['Murakkab savolni o‘rganish','Texnik muammoni hal qilish','Yangicha g‘oya topish','Boshqani tinglash va tushuntirish','Ishni tashkil qilish','Amalda bajarib ko‘rish']],['Qaysi ko‘nikmani rivojlantirmoqchisiz?',['Ilmiy savodxonlik','Raqamli va texnik ko‘nikma','Ijodkorlik','Muloqot','Liderlik','Amaliy mahorat']]]};
+let group='';const keys=Object.keys(categories);function start(g){group=g;document.getElementById('start').classList.add('hide');document.getElementById('outcome').classList.add('hide');document.getElementById('survey').classList.remove('hide');document.getElementById('heading').textContent={primary:'1–4-sinflar: qiziqishlar',middle:'5–8-sinflar: moyilliklar',upper:'9–11-sinflar: kasbiy qiziqishlar'}[g];document.getElementById('gradeWrap').classList.toggle('hide',g!=='upper');document.getElementById('questions').innerHTML=data[g].map((q,i)=>'<fieldset style="border:1px solid #d3e8df;border-radius:12px;margin:15px 0;padding:15px"><legend><strong>'+(i+1)+'. '+q[0]+'</strong></legend>'+q[1].map((a,j)=>'<label><input type="radio" name="q'+i+'" value="'+keys[j]+'"> '+a+'</label>').join('')+'</fieldset>').join('');document.getElementById('error').textContent='';}
+function finish(){const scores=Object.fromEntries(keys.map(k=>[k,0]));for(let i=0;i<data[group].length;i++){const checked=document.querySelector('input[name="q'+i+'"]:checked');if(!checked){document.getElementById('error').textContent='Iltimos, barcha savollarga javob bering.';return;}scores[checked.value]++;}const ranked=keys.sort((a,b)=>scores[b]-scores[a]);const top=ranked.filter(k=>scores[k]===scores[ranked[0]]);const names=top.map(k=>categories[k]).join(', ');let guidance='Qiziqishingizga mos to‘garaklar va mashg‘ulotlarni sinab ko‘ring.';if(group==='middle')guidance='Mos to‘garak, loyiha va kasblar bilan tanishish mashg‘ulotlarini tanlang.';if(group==='upper'){const grade=document.getElementById('grade').value;guidance=grade==='9'?'9-sinfdan so‘ng 10–11-sinfda davom etish yoki amaldagi qabul qoidalariga mos texnikum yo‘nalishlarini o‘rganing. Ustoz–shogird mashg‘ulotlarini ta’lim bilan uyg‘unlashtirish mumkin.':grade==='10'?'11-sinfga tayyorgarlik, kasblar bilan tanishish, OTM va texnikum yo‘nalishlarini solishtirish rejasini tuzing.':'OTM, texnikum yoki ustoz–shogird orqali kasbiy ko‘nikma egallash yo‘llarini qiziqish, tayyorgarlik va qabul shartlariga qarab solishtiring.';}document.getElementById('result').innerHTML='<h3>Ko‘proq tanlangan qiziqish yo‘nalishi: '+names+'</h3><p>'+guidance+'</p><p><strong>Keyingi qadam:</strong> Fanlarga qiziqish, haqiqiy ko‘nikmalar, o‘qish imkoniyatlari va oila bilan maslahatlashib individual reja tuzing.</p>';document.getElementById('survey').classList.add('hide');document.getElementById('outcome').classList.remove('hide');document.getElementById('outcome').scrollIntoView({behavior:'smooth'});}function reset(){document.getElementById('survey').classList.add('hide');document.getElementById('outcome').classList.add('hide');document.getElementById('start').classList.remove('hide');window.scrollTo({top:0,behavior:'smooth'});}
+</script></body></html>
