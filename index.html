@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25-maktab | Kelajak portali</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef8f5;color:#163d35}
+header{background:white;padding:22px;text-align:center;box-shadow:0 2px 10px #0001}
+header h2{margin:0;color:#087f67}
+main{max-width:850px;margin:35px auto;padding:20px}
+.card{background:linear-gradient(135deg,#062b27,#08785d);color:white;padding:45px 30px;border-radius:25px}
+h1{font-size:clamp(28px,5vw,45px)}
+p{line-height:1.7}
+button{background:#00a47b;color:white;border:0;border-radius:12px;padding:15px 25px;font-size:17px;cursor:pointer;margin:6px}
+.lang{text-align:center;margin-bottom:25px}
+footer{text-align:center;padding:20px;color:#567}
+</style>
+</head>
+<body>
+<header>
+<h2>🎓 25-MAKTAB | KELAJAK PORTALI</h2>
+<p>Qiziqish va qobiliyatlarni aniqlash tizimi</p>
+</header>
+<main>
+<div class="lang">
+<button onclick="setLang('uz')">🇺🇿 O‘zbekcha</button>
+<button onclick="setLang('ru')">🇷🇺 Русский</button>
+</div>
+<section class="card">
+<h1 id="title">Kelajagingizni bugundan boshlang!</h1>
+<p id="desc">Kasbiy qiziqishlaringiz va qobiliyatlaringizni kashf eting. O‘zingizga mos kasblar haqida bilib oling.</p>
+<button id="start" onclick="alert('Test bo‘limi keyingi bosqichda qo‘shiladi')">Testni boshlash</button>
+</section>
+</main>
+<footer>Buxoro shahar 25-umumiy o‘rta ta’lim maktabi © 2026</footer>
+<script>
+function setLang(lang){
+const ru=lang==='ru';
+document.documentElement.lang=lang;
+document.getElementById('title').textContent=ru?'Начните строить будущее сегодня!':'Kelajagingizni bugundan boshlang!';
+document.getElementById('desc').textContent=ru?'Узнайте о своих интересах, способностях и подходящих профессиях.':'Kasbiy qiziqishlaringiz va qobiliyatlaringizni kashf eting. O‘zingizga mos kasblar haqida bilib oling.';
+document.getElementById('start').textContent=ru?'Начать тест':'Testni boshlash';
+document.getElementById('start').onclick=()=>alert(ru?'Тест будет добавлен на следующем этапе':'Test bo‘limi keyingi bosqichda qo‘shiladi');
+}
+</script>
+</body>
+</html>
